@@ -1,5 +1,6 @@
 import 'package:calendar/models/date_time_extension.dart';
 import 'package:calendar/widgets/calendar.dart';
+import 'package:calendar/widgets/events.dart';
 import 'package:calendar/widgets/header.dart';
 import 'package:flutter/material.dart';
 
@@ -45,9 +46,17 @@ class _CalendarScreenState extends State<CalendarScreen> {
               selectedDate: selectedDate,
               selectedMonth: selectedMonth,
               selectDate: (DateTime value) => setState(() {
-                selectedDate = value;
+                if (value.isBefore(
+                  DateTime.now().dayBefore,
+                )) {
+                  return;
+                } else {
+                  selectedDate = value;
+                }
               }),
             ),
+            const Divider(),
+            const EventList(),
           ],
         ),
       ),

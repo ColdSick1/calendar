@@ -19,7 +19,7 @@ class Calendar extends StatelessWidget {
     var data =
         CalendarMonth(year: selectedMonth.year, month: selectedMonth.month);
     return SizedBox(
-        height: 300,
+        height: 200,
         child: Column(
           children: [
             const Row(

@@ -1,3 +1,4 @@
+import 'package:calendar/models/date_time_extension.dart';
 import 'package:flutter/material.dart';
 
 class RowItem extends StatelessWidget {
@@ -17,7 +18,7 @@ class RowItem extends StatelessWidget {
     final number = date.day;
 
     final bool isPassed = date.isBefore(
-      DateTime.now(),
+      DateTime.now().dayBefore,
     );
     return GestureDetector(
         onTap: onTap,
@@ -30,17 +31,19 @@ class RowItem extends StatelessWidget {
                   shape: BoxShape.circle,
                 )
               : null,
-          child: Text(
-            number.toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: isPassed
-                  ? isActiveMonth
-                      ? Colors.grey
-                      : Colors.transparent
-                  : isActiveMonth
-                      ? Colors.black
-                      : Colors.grey[300],
+          child: Center(
+            child: Text(
+              number.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: isPassed
+                    ? isActiveMonth
+                        ? Colors.grey
+                        : Colors.transparent
+                    : isActiveMonth
+                        ? Colors.black
+                        : Colors.grey[300],
+              ),
             ),
           ),
         ));

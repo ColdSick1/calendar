@@ -20,4 +20,17 @@ extension DateTimeExt on DateTime {
       DateTime.now(),
     );
   }
+
+  List<DateTime> daysRange(DateTime dayOne, DateTime dayTwo) {
+    List<DateTime> list = [];
+
+    list.addAll(
+      [dayOne, dayTwo],
+    );
+    return list;
+  }
+
+  DateTime get dayBefore {
+    return DateTime(year, month, day);
+  }
 }
