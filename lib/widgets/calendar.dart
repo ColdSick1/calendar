@@ -1,4 +1,4 @@
-import 'package:calendar/test.dart';
+import 'package:calendar/models/date_time_extension.dart';
 import 'package:calendar/widgets/row_item.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +6,7 @@ import '../models/calendar_month.dart';
 
 class Calendar extends StatelessWidget {
   final DateTime selectedMonth;
-  final DateTime selectedDate;
+  final DateTime? selectedDate;
   final ValueChanged<DateTime> selectDate;
   const Calendar(
       {super.key,
@@ -20,11 +20,10 @@ class Calendar extends StatelessWidget {
         CalendarMonth(year: selectedMonth.year, month: selectedMonth.month);
     return SizedBox(
         height: 300,
-        width: double.infinity,
         child: Column(
           children: [
             const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text('M'),
                 Text('T'),
@@ -53,7 +52,8 @@ class Calendar extends StatelessWidget {
                           child: RowItem(
                             date: e.date,
                             isActiveMonth: e.isActiveMonth,
-                            isSelected: selectedDate.isSameDate(e.date),
+                            isSelected: selectedDate != null &&
+                                selectedDate!.sameDate(e.date),
                             onTap: () => selectDate(e.date),
                           ),
                         ),

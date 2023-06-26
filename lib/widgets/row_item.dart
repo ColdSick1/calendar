@@ -15,18 +15,24 @@ class RowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final number = date.day;
-    // final isToday = date.isToday;
+
     final bool isPassed = date.isBefore(
       DateTime.now(),
     );
     return GestureDetector(
         onTap: onTap,
         child: Container(
+          height: 25,
+          width: 25,
           decoration: isSelected
-              ? const BoxDecoration(color: Colors.blue, shape: BoxShape.circle)
+              ? const BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                )
               : null,
           child: Text(
             number.toString(),
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: isPassed
                   ? isActiveMonth

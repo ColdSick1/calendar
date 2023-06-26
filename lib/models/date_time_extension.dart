@@ -8,7 +8,7 @@ extension DateTimeExt on DateTime {
   }
 
   DateTime addMonth(int count) {
-    return DateTime(year, month, day + count);
+    return DateTime(year, month + count, day);
   }
 
   bool sameDate(DateTime date) {
